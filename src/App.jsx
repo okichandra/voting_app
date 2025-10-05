@@ -1,11 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import LoginPage from "./pages/loginPage"
+import VoterPage from "./pages/voterPage"
+import AdminPage from "./pages/adminPage"
+import ErrorPage from "./pages/ErrorPage"
 
-export default function App() {
+const App = () => {
   return (
-    <div className=''>
-      <h1 className='underline black'>Learn React</h1>
-    </div>
+    <Router basename="/">
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/voter" element={<VoterPage />} />
+        <Route path="/admin" element= {<AdminPage />} />
+        <Route path="/*" element={<ErrorPage />} />
+      </Routes>
+    </Router>
   )
 }
+export default App
